@@ -140,6 +140,26 @@ def parse_message2(msg2):
 
     return nonce
 
+
+environ = {
+    "FLAGS":"068208"
+}
+print(create_message1(environ))
+
+
+environ = {'LM': True,
+           'NT': True,
+           'DOMAIN': "Prague",
+           'USER': "frankie",
+           "HOST": "Arjun-Satishs-MBP15",
+           'FLAGS': '06820800',
+           "LM_HASHED_PW": ntlm_procs.create_LM_hashed_password("boo"),
+           "NT_HASHED_PW": ntlm_procs.create_NT_hashed_password("boo"),
+           "NTLM_MODE": 0
+           }
+challenge = parse_message2("TlRMTVNTUAACAAAACQAJAK6qqqoFggiivRLWo8u5V0IAAAAAAAA6AFdPUktHUk9VUA==")
+print(create_message3(challenge, environ))
+
 #---------------------------------------------------------------------
 def item(item_str):
     ""
